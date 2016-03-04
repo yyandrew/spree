@@ -1,6 +1,7 @@
 module Spree
   class StoreController < Spree::BaseController
     include Spree::Core::ControllerHelpers::Order
+    include Spree::Core::ControllerHelpers::Flash
 
     skip_before_action :set_current_order, only: :cart_link
 

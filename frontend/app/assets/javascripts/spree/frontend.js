@@ -1,6 +1,8 @@
 //= require bootstrap-sprockets
 //= require jquery.payment
 //= require jquery.validate/jquery.validate.min
+//= require unobtrusive_flash
+//= require unobtrusive_flash_bootstrap
 //= require spree
 //= require spree/frontend/cart
 //= require spree/frontend/checkout

@@ -22,14 +22,14 @@ describe "Cart", type: :feature, inaccessible: true do
   end
 
   # Regression test for #2006
-  it "does not error out with a 404 when GET'ing to /orders/populate" do
+  it "does not error out with a 404 when GET'ing to /orders/populate", js: true do
     visit '/orders/populate'
     within(".alert-error") do
       expect(page).to have_content(Spree.t(:populate_get_error))
     end
   end
 
-  it 'allows you to remove an item from the cart', :js => true do
+  it 'allows you to remove an item from the cart', js: true do
     create(:product, name: "RoR Mug")
     visit spree.root_path
     click_link "RoR Mug"

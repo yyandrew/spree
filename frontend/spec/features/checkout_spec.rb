@@ -481,7 +481,7 @@ describe 'Checkout', type: :feature, inaccessible: true, js: true do
       click_button 'Save and Continue'
     end
 
-    it 'displays a thank you message' do
+    it 'displays a thank you message', js: true do
       expect(page).to have_content(Spree.t(:thank_you_for_your_order))
     end
 

@@ -50,15 +50,8 @@ module Spree
       content_tag('ul', raw(items.join("\n")), class: 'progress-steps nav nav-pills nav-justified', id: "checkout-step-#{@order.state}")
     end
 
-    def flash_messages(opts = {})
-      ignore_types = ["order_completed"].concat(Array(opts[:ignore_types]).map(&:to_s) || [])
-
-      flash.each do |msg_type, text|
-        unless ignore_types.include?(msg_type)
-          concat(content_tag :div, text, class: "alert alert-#{msg_type}")
-        end
-      end
-      nil
+    def flash_messages(_opts = {})
+      content_tag(:div, '', class: 'unobtrusive-flash-container')
     end
 
     def link_to_cart(text = nil)
