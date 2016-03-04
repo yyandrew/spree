@@ -64,4 +64,52 @@ describe Spree::ProductsController, :type => :controller do
       expect(response.header["Location"]).to include("taxon_id=#{taxon.id}")
     end
   end
+
+  context 'http caching of products#show' do
+    let!(:product) { create(:product) }
+
+    context 'on the first request' do
+      it 'returns a 200' do
+        spree_get :show, id: product.to_param
+        expect(response.status).to eq(200)
+      end
+    end
+
+    context 'on a subsequent request' do
+      before do
+        spree_get :show, id: product.to_param
+        expect(response.status).to eq(200)
+        expect(response.headers['ETag']).to be_present
+        expect(response.headers['Last-Modified']).to be_present
+        @etag = response.headers['ETag']
+        @last_modified = response.headers['Last-Modified']
+      end
+
+      context "if it is not stale" do
+        before do
+          request.env['HTTP_IF_NONE_MATCH'] = @etag
+          request.env['HTTP_IF_MODIFIED_SINCE'] = @last_modified
+        end
+
+        it 'returns a 304' do
+          spree_get :show, id: product.to_param
+          expect(response.status).to eq(304)
+        end
+      end
+
+      context 'if it has been updated' do
+        before do
+          sleep 1 # To ensure the product.updated_at has a delta of at least 1 sec
+          product.touch
+          request.env['HTTP_IF_NONE_MATCH'] = @etag
+          request.env['HTTP_IF_MODIFIED_SINCE'] = @last_modified
+        end
+
+        it 'returns a 200' do
+          spree_get :show, id: product.to_param
+          expect(response.status).to eq(200)
+        end
+      end
+    end
+  end
 end

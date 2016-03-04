@@ -1,9 +1,11 @@
 module Spree
   class ProductsController < Spree::StoreController
+    include Spree::ProductsHelper
+
     before_action :load_product, only: :show
     before_action :load_taxon, only: :index
 
-    rescue_from ActiveRecord::RecordNotFound, :with => :render_404
+    rescue_from ActiveRecord::RecordNotFound, with: :render_404
     helper 'spree/taxons'
 
     respond_to :html
@@ -15,12 +17,14 @@ module Spree
     end
 
     def show
-      @variants = @product.variants_including_master.
-                           spree_base_scopes.
-                           active(current_currency).
-                           includes([:option_values, :images])
-      @product_properties = @product.product_properties.includes(:property)
-      @taxon = Spree::Taxon.find(params[:taxon_id]) if params[:taxon_id]
+      if stale?(etag: cache_key_for_product, last_modified: @product.updated_at.utc, public: true)
+        @variants = @product.variants_including_master.
+                             spree_base_scopes.
+                             active(current_currency).
+                             includes([:option_values, :images])
+        @product_properties = @product.product_properties.includes(:property)
+        @taxon = Spree::Taxon.find(params[:taxon_id]) if params[:taxon_id]
+      end
       redirect_if_legacy_path
     end
 
