@@ -86,10 +86,6 @@ module Spree
       !discontinued? && product.available?
     end
 
-    def self.having_orders
-      joins(:line_items).distinct
-    end
-
     def tax_category
       if self[:tax_category_id].nil?
         product.tax_category
