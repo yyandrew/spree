@@ -2,9 +2,16 @@ module Spree
   class ReimbursementType < Spree::Base
     include Spree::NamedType
 
+    TYPES = %w(Spree::ReimbursementType::Credit
+               Spree::ReimbursementType::Exchange
+               Spree::ReimbursementType::OriginalPayment
+               Spree::ReimbursementType::StoreCredit)
     ORIGINAL = 'original'
 
     has_many :return_items
+
+    validates :name, :type, presence: true
+    validates :type, inclusion: { in: TYPES }
 
     # This method will reimburse the return items based on however it child implements it
     # By default it takes a reimbursement, the return items it needs to reimburse, and if
