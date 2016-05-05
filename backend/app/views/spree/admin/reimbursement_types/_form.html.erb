@@ -6,12 +6,15 @@
         <%= f.error_message_on :name %>
     <% end %>
   </div>
-  <div class="col-md-8">
-    <%= f.field_container :type, class: ['form-group'] do %>
-        <%= f.label :type, Spree.t(:type) %>
-        <%= f.select :type, options_for_select(Spree::ReimbursementType::TYPES), {:include_blank => false}, { :class => 'select2' } %>
-    <% end %>
-  </div>
+  <%- if @reimbursement_type.new_record? %>
+    <div class="col-md-8">
+      <%= f.field_container :type, class: ['form-group'] do %>
+          <%= f.label :type, Spree.t(:type) %>
+          <%= f.select :type, options_for_select(Spree::ReimbursementType::TYPES), {:include_blank => false}, { :class => 'select2' } %>
+          <%= f.error_message_on :type %>
+      <% end %>
+    </div>
+  <% end %>
   <div class="col-md-5">
     <%= f.field_container :active, class: ['form-inline'] do %>
         <%= f.check_box :active, class: 'form-control' %>
