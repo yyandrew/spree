@@ -24,11 +24,9 @@ module Spree
       private
 
       def permitted_resource_params_for_update
-        params_hash = @object.type.underscore.remove('spree').gsub('/', '_')
-        params_hash[0] = ''
+        params_hash = @object.type.underscore.remove('spree/').gsub('/', '_')
         params.require(params_hash.to_s).permit(:name, :active, :mutable)
       end
-
     end
   end
 end
