@@ -17,5 +17,7 @@ dependencies:
     - ./build-ci.rb install
 test:
   override:
+    - bundle -v
+    - bundle exec bundle -v
     - './build-ci.rb test':
        parallel: true
