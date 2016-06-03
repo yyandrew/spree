@@ -10,6 +10,7 @@ dependencies:
   override:
     - ./build-ci.rb install
     - bundle -v
+    - bundle show bundler
     - gem -v
 test:
   override:
