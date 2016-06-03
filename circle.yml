@@ -8,7 +8,11 @@ machine:
     version: 2.1.5
 dependencies:
   pre:
-    - rvm install rubygems 2.4.3 --force
+    - gem -v
+    - rvm @global do gem uninstall bundler -ax
+    - rvm install rubygems 2.4.8 --force
+    - gem install bundler --pre
+    - bundle -v
   override:
     - ./build-ci.rb install
     - bundle -v
@@ -17,3 +21,5 @@ test:
   override:
     - './build-ci.rb test':
        parallel: true
+    - bundle -v
+    - bundle exec bundle -v
