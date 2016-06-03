@@ -8,7 +8,8 @@ machine:
     version: 2.1.5
 dependencies:
   pre:
-    - rvm get head
+    - rvm install rubygems 2.4.8 --force
+    - gem install bundler -v 1.11.2
   override:
     - ./build-ci.rb install
 test:
