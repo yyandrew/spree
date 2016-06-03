@@ -8,7 +8,7 @@ machine:
     version: 2.1.5
 dependencies:
   pre:
-    - rvm install rubygems 2.6.1 --force
+    - rvm install rubygems 2.6.1
   override:
     - ./build-ci.rb install
     - bundle -v
