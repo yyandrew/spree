@@ -11,7 +11,7 @@ dependencies:
     - gem -v
     - rvm @global do gem uninstall bundler -ax
     - rvm install rubygems 2.4.8 --force
-    - gem install bundler 1.9.5 --pre
+    - gem install bundler -v 1.9.5 --pre
     - bundle -v
   override:
     - ./build-ci.rb install
