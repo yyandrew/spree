@@ -10,6 +10,7 @@ dependencies:
   pre:
     - gem -v
     - rvm install rubygems 2.4.3 --force
+    - gem install bundler -v '1.11.2'
     - bundle -v
   override:
     - ./build-ci.rb install
