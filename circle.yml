@@ -20,6 +20,6 @@ dependencies:
 test:
   override:
     - sed -i -e "s/Gem.activate_bin_path('bundler', 'bundle', version)/'\/home\/ubuntu\/.rvm\/gems\/ruby-2.1.5\/gems\/bundler-1.11.2\/exe\/bundle'/g" /home/ubuntu/.rvm/gems/ruby-2.1.5/bin/bundle
+    - bundle -v
     - './build-ci.rb test':
        parallel: true
-    - bundle -v
