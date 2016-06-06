@@ -9,7 +9,7 @@ machine:
 dependencies:
   pre:
     - gem -v
-    - rvm install rubygems 2.4.8 --force
+    - rvm install rubygems 2.4.3 --force
     - bundle -v
   override:
     - ./build-ci.rb install
