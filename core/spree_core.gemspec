@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'acts_as_list', '~> 0.7.4'
   s.add_dependency 'awesome_nested_set', '~> 3.1.1'
   s.add_dependency 'carmen', '~> 1.0.0'
-  s.add_dependency 'cancancan', '~> 1.10.1'
+  s.add_dependency 'cancancan', '~> 1.15'
   s.add_dependency 'deface', '~> 1.0.0'
   s.add_dependency 'ffaker', '~> 2.2.0'
   s.add_dependency 'font-awesome-rails', '~> 4.0'
