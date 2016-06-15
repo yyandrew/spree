@@ -22,14 +22,14 @@ module Spree
           flash[:error] = Spree.t(:could_not_create_stock_movement)
         end
 
-        redirect_to :back
+        redirect_back(fallback_location: admin_path)
       end
 
       def destroy
         stock_item.destroy
 
         respond_with(@stock_item) do |format|
-          format.html { redirect_to :back }
+          format.html { redirect_back(fallback_location: admin_path) }
           format.js
         end
       end

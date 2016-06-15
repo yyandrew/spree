@@ -87,26 +87,26 @@ module Spree
       def cancel
         @order.canceled_by(try_spree_current_user)
         flash[:success] = Spree.t(:order_canceled)
-        redirect_to :back
+        redirect_back(fallback_location: admin_path)
       end
 
       def resume
         @order.resume!
         flash[:success] = Spree.t(:order_resumed)
-        redirect_to :back
+        redirect_back(fallback_location: admin_path)
       end
 
       def approve
         @order.approved_by(try_spree_current_user)
         flash[:success] = Spree.t(:order_approved)
-        redirect_to :back
+        redirect_back(fallback_location: admin_path)
       end
 
       def resend
         OrderMailer.confirm_email(@order.id, true).deliver_later
         flash[:success] = Spree.t(:order_email_resent)
 
-        redirect_to :back
+        redirect_back(fallback_location: admin_path)
       end
 
       def open_adjustments
@@ -114,7 +114,7 @@ module Spree
         adjustments.update_all(state: 'open')
         flash[:success] = Spree.t(:all_adjustments_opened)
 
-        respond_with(@order) { |format| format.html { redirect_to :back } }
+        respond_with(@order) { |format| format.html { redirect_back(fallback_location: admin_path) } }
       end
 
       def close_adjustments
@@ -122,7 +122,7 @@ module Spree
         adjustments.update_all(state: 'closed')
         flash[:success] = Spree.t(:all_adjustments_closed)
 
-        respond_with(@order) { |format| format.html { redirect_to :back } }
+        respond_with(@order) { |format| format.html { redirect_back(fallback_location: admin_path) } }
       end
 
       private
