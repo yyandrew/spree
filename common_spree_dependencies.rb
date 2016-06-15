@@ -4,9 +4,16 @@
 source 'https://rubygems.org'
 
 gem 'coffee-rails', '~> 4.1.1'
-gem 'sass-rails', '~> 5.0.0'
+# gem 'sass-rails', '~> 5.0.0'
+gem 'sass-rails', github: 'rails/sass-rails', branch: 'master'
+gem 'railties', '~> 5.0.0.rc1'
+
 gem 'sqlite3', platforms: [:ruby, :mingw, :mswin, :x64_mingw]
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+gem 'paranoia', github: 'rubysherpas/paranoia', branch: 'core'
+gem 'activerecord', '~> 5.0.0.rc1' # paranoia needs to be feed
+
+gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on', branch: 'master', require: false
 
 platforms :jruby do
   gem 'jruby-openssl'
@@ -37,7 +44,8 @@ group :test do
   gem 'mutant-rspec', '~> 0.8.0'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'shoulda-callback-matchers', '~> 1.1.1'
-  gem 'test_after_commit', '~> 1.0.0'
+  gem 'activesupport', '~> 5.0.0.rc1'
+  gem 'actionpack', '~> 5.0.0.rc1'
 end
 
 group :test, :development do
