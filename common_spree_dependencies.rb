@@ -36,6 +36,7 @@ group :test do
   gem 'rspec-collection_matchers'
   gem 'rspec-its'
   gem 'rspec-rails', '~> 3.5.0.beta4'
+  gem 'rails-controller-testing'
   gem 'simplecov'
   gem 'webmock', '~> 2.0.3'
   gem 'poltergeist', '~> 1.9.0'
