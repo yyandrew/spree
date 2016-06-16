@@ -1,4 +1,4 @@
-class CreateShippingMethodZone < ActiveRecord::Migration
+class CreateShippingMethodZone < ActiveRecord::Migration[4.2]
   class ShippingMethodZone < ActiveRecord::Base
     self.table_name = 'shipping_methods_zones'
   end
