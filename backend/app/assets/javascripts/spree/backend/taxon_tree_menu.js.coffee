@@ -19,4 +19,4 @@ root.taxon_tree_menu = (obj, context) ->
   edit:
     separator_before: true,
     label: "<span class='icon icon-cog'></span> " + Spree.translations.edit,
-    action: (obj) -> window.location = edit_url.toString()
+    action: (obj) -> Turbolinks.visit(edit_url.toString())

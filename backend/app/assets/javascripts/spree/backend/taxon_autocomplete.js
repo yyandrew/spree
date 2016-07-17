@@ -47,6 +47,6 @@ var set_taxon_select = function(selector){
   }
 }
 
-$(document).ready(function () {
+document.addEventListener("turbolinks:load", function () {
   set_taxon_select('#product_taxon_ids')
 });

@@ -1,4 +1,4 @@
-$(document).ready ->
+document.addEventListener "turbolinks:load",  ->
   window.productTemplate = Handlebars.compile($('#product_template').text());
   $('#taxon_products').sortable({
     handle: ".js-sort-handle"
@@ -82,6 +82,6 @@ $(document).ready ->
   $('#taxon_products').on "click", ".js-edit-product", (e) ->
     product = $(this).parents(".product")
     product_id = product.data("product-id")
-    window.location = Spree.routes.edit_product(product_id)
+    Turbolinks.visit(Spree.routes.edit_product(product_id))
 
   $(".variant_autocomplete").variantAutocomplete();

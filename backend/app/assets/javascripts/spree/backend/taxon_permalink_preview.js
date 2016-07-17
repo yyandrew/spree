@@ -1,4 +1,4 @@
-$(document).ready(function() {
+document.addEventListener("turbolinks:load", function () {
   if ($('#permalink_part_display').length) {
     var field  = $('#permalink_part'),
         target = $('#permalink_part_display'),

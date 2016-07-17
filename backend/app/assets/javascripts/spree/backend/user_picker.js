@@ -36,6 +36,6 @@ $.fn.userAutocomplete = function () {
   });
 };
 
-$(document).ready(function () {
+document.addEventListener("turbolinks:load", function () {
   $('.user_picker').userAutocomplete();
 });

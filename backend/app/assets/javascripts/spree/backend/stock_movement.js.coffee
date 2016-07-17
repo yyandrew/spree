@@ -1,4 +1,4 @@
-jQuery ->
+document.addEventListener 'turbolinks:load', ->
   el = $('#stock_movement_stock_item_id')
   el.select2
     placeholder: "Find a stock item" # translate

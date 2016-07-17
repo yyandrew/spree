@@ -1,5 +1,5 @@
 // This file contains the code for interacting with line items in the manual cart
-$(document).ready(function () {
+document.addEventListener("turbolinks:load", function () {
     'use strict';
 
     // handle variant selection, show stock level.
@@ -41,7 +41,7 @@ adjustLineItems = function(order_number, variant_id, quantity){
         }
     }).done(function( msg ) {
         window.Spree.advanceOrder();
-        window.location.reload();
+        Turbolinks.visit(window.location);
     }).fail(function(msg) {
         alert(msg.responseJSON.message)
     });

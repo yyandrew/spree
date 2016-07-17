@@ -45,6 +45,6 @@ $.fn.productAutocomplete = function (options) {
   });
 };
 
-$(document).ready(function () {
+document.addEventListener("turbolinks:load", function () {
   $('.product_picker').productAutocomplete();
 });

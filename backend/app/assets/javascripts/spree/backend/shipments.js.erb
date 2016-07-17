@@ -1,5 +1,5 @@
 // Shipments AJAX API
-$(document).ready(function () {
+document.addEventListener("turbolinks:load", function () {
   'use strict';
 
   // handle variant selection, show stock level.
@@ -62,7 +62,7 @@ $(document).ready(function () {
         token: Spree.api_key
       }
     }).done(function () {
-      window.location.reload();
+      Turbolinks.visit(window.location);
     }).error(function (msg) {
       console.log(msg);
     });
@@ -93,7 +93,7 @@ $(document).ready(function () {
         token: Spree.api_key
       }
     }).done(function () {
-      window.location.reload();
+      Turbolinks.visit(window.location);
     }).error(function (msg) {
       console.log(msg);
     });
@@ -165,7 +165,7 @@ adjustShipmentItems = function(shipment_number, variant_id, quantity){
           token: Spree.api_key
         }
       }).done(function( msg ) {
-        window.location.reload();
+        Turbolinks.visit(window.location);
       }).fail(function(msg) {
         alert(msg.responseJSON.message)
       });
@@ -322,7 +322,7 @@ addVariantFromStockLocation = function(event) {
         token: Spree.api_key
       }
     }).done(function( msg ) {
-      window.location.reload();
+      Turbolinks.visit(window.location);
     }).error(function( msg ) {
       console.log(msg);
     });

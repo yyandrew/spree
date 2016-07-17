@@ -1,5 +1,5 @@
 # variant autocompletion
-$(document).ready ->
+document.addEventListener "turbolinks:load",  ->
   if $("#variant_autocomplete_template").length > 0
     window.variantTemplate = Handlebars.compile($("#variant_autocomplete_template").text())
     window.variantStockTemplate = Handlebars.compile($("#variant_autocomplete_stock_template").text())

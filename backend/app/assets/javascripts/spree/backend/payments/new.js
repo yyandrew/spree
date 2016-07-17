@@ -1,5 +1,5 @@
 //= require jquery.payment
-$(document).ready(function() {
+document.addEventListener("turbolinks:load", function() {
   if ($("#new_payment").is("*")) {
     $(".cardNumber").payment('formatCardNumber');
     $(".cardExpiry").payment('formatCardExpiry');
@@ -44,7 +44,7 @@ $(document).ready(function() {
     });
 
     $('select.jump_menu').change(function(){
-      window.location = this.options[this.selectedIndex].value;
+      Turbolinks.visit(this.options[this.selectedIndex].value);
     });
   }
 });

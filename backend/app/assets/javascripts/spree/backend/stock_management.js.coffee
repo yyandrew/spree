@@ -1,4 +1,4 @@
-jQuery ->
+document.addEventListener 'turbolinks:load', ->
   $('.stock_item_backorderable').on 'click', ->
     $(@).parent('form').submit()
   $('.toggle_stock_item_backorderable').on 'submit', ->

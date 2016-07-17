@@ -4,7 +4,7 @@ under the spree namespace that do stuff we find helpful.
 Hopefully, this will evolve into a propper class.
 **/
 
-jQuery(function($) {
+document.addEventListener("turbolinks:load", function() {
 
   // Add some tips
   $('.with-tip').tooltip();
@@ -144,12 +144,12 @@ jQuery(function($) {
     } else {
       url += "?per_page=" + value;
     }
-    window.location = url;
+    Turbolinks.visit(url);
   });
 
   // injects per_page settings to all available search forms
   // so when user changes some filters / queries per_page is preserved
-  $(document).ready(function() {
+  document.addEventListener("turbolinks:load", function() {
     var perPageDropdown = $(".js-per-page-select:first");
     if (perPageDropdown.length) {
       var perPageValue = perPageDropdown.val().toString();
@@ -210,7 +210,7 @@ handle_date_picker_fields = function(){
   });
 }
 
-$(document).ready(function(){
+document.addEventListener("turbolinks:load", function(){
   handle_date_picker_fields();
   $(".observe_field").on('change', function() {
     target = $(this).data("update");
@@ -372,7 +372,7 @@ $(document).ready(function(){
           },
           url: Spree.url(Spree.routes.checkouts_api + "/" + order_number + "/advance")
       }).done(function() {
-          window.location.reload();
+          Turbolinks.visit(window.location);
       });
   }
 });

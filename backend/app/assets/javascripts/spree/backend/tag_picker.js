@@ -47,6 +47,6 @@ $.fn.tagAutocomplete = function () {
   });
 };
 
-$(document).ready(function () {
+document.addEventListener("turbolinks:load", function () {
   $('.tag_picker').tagAutocomplete();
 });

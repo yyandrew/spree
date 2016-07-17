@@ -11,6 +11,7 @@
 //= require select2
 //= require underscore-min.js
 //= require velocity
+//= require turbolinks
 
 //= require spree
 //= require spree/backend/spree-select2

@@ -1,4 +1,4 @@
-$(document).ready ->
+document.addEventListener "turbolinks:load",  ->
   #handle edit click
   $('a.edit-line-item').click toggleLineItemEdit
 

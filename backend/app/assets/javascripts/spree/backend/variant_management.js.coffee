@@ -1,4 +1,4 @@
-jQuery ->
+document.addEventListener 'turbolinks:load', ->
   $('.track_inventory_checkbox').on 'click', ->
     $(this).siblings('.variant_track_inventory').val($(this).is(':checked'))
     $(this).parents('form').submit()
