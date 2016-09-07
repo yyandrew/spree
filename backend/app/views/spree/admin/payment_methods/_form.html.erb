@@ -44,7 +44,7 @@
     <div class="col-md-8">
       <%= field_container :payment_method, :name, class: ['form-group'], 'data-hook' => 'name' do %>
         <%= label_tag :payment_method_name, Spree.t(:name) %>
-        <%= text_field :payment_method, :name, class: 'form-control' %>
+        <%= text_field :payment_method, :name, class: 'form-control', required: true %>
         <%= error_message_on :payment_method, :name %>
       <% end %>
       <%= field_container :payment_method, :description, class: ['form-group'], 'data-hook' => 'description' do %>

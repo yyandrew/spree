@@ -15,7 +15,7 @@
         <div data-hook="rate" class="form-group">
           <%= f.field_container :amount, class: ["form-group"] do %>
             <%= f.label :amount, Spree.t(:rate) %>
-            <%= f.text_field :amount, class: 'form-control' %>
+            <%= f.text_field :amount, class: 'form-control', required: true %>
             <%= f.error_message_on :amount %>
           <% end %>
           <p class="help-block">
@@ -37,7 +37,8 @@
         </div>
         <div data-hook="category" class="form-group">
           <%= f.label :tax_category_id, Spree.t(:tax_category) %>
-          <%= f.collection_select(:tax_category_id, @available_categories,:id, :name, {}, {class: 'select2'}) %>
+          <%= f.collection_select :tax_category_id, @available_categories,:id, :name, {},
+                                  { class: 'select2', required: true } %>
         </div>
         <div data-hook="show_rate" class="form-group">
           <%= f.label :show_rate_in_label do %>

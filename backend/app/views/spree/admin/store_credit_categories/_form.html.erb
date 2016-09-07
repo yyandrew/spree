@@ -1,7 +1,7 @@
 <div data-hook="admin_store_credit_category_form_fields">
   <%= f.field_container :name, class: ['form-group'], 'data-hook' => 'store_credit_category_name' do %>
     <%= f.label :name, Spree.t(:name) %> <span class="required">*</span>
-    <%= f.text_field :name, class: 'form-control' %>
+    <%= f.text_field :name, class: 'form-control', required: true %>
     <%= f.error_message_on :name %>
   <% end %>
 

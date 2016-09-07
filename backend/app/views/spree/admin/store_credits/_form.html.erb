@@ -1,13 +1,14 @@
 <div data-hook="admin_store_credit_form_fields">
   <%= f.field_container :amount, class: ['form-group'] do %>
     <%= f.label :amount, raw(Spree.t(:amount) + content_tag(:span, " *", class: "required")) %>
-    <%= f.text_field :amount, class: 'form-control' %>
+    <%= f.text_field :amount, class: 'form-control', required: true %>
     <%= f.error_message_on :amount %>
   <% end %>
   <%= f.field_container :category, class: ['form-group'] do %>
     <%= f.label :category, raw(Spree.t(:category) + content_tag(:span, " *", class: "required")) %>
     <%= f.select :category_id, options_from_collection_for_select(@credit_categories, :id, :name, f.object.category.try(:id)),
-        { include_blank: true }, { class: 'select2 fullwidth', placeholder: Spree.t(:select_a_store_credit_reason) } %>
+        { include_blank: true },
+        { class: 'select2 fullwidth', placeholder: Spree.t(:select_a_store_credit_reason), required: true } %>
     <%= f.error_message_on :category %>
   <% end %>
   <%= f.field_container :memo, class: ['form-group'] do %>
